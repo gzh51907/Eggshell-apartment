@@ -6,6 +6,8 @@ import Jointrent from './pages/Jointrent.js';
 import Entiretenancy from './pages/Entiretenancy.js';
 import Ownertojoin from './pages/Ownertojoin.js';
 import Housingresource from './pages/Housingresource.js';
+import Login from './pages/Login.js';
+import Reg from './pages/Reg.js';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
                 <Route path="/entiretenancy" component={Entiretenancy}/>
                 <Route path="/ownertojoin" component={Ownertojoin}/>
                 <Route path="/housingresource" component={Housingresource}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/reg" component={Reg}/>
                 <Redirect from="/" to="/home" exact/>
                 <Route render={() => <div><h1>404</h1>页面不存在</div>} />
     

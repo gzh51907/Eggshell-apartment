@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { log } from 'util';
 
 let Hgw = axios.create({
-    baseURL:'http://www.hangowa.com/mo_bile/index.php'
+    baseURL:'http://127.0.0.1:1906/user/reg'
 })
 
 export async function get(params,config={}){
@@ -13,8 +14,13 @@ export async function get(params,config={}){
 }
 
 export async function post(params,config={}){
-    let {data} = await Hgw.post('',params,config);
+    console.log(params);
+    
+    let data = await axios.post('',params,config);
+    console.log(data);
     return data;
+    
+    
 }
 
 export default {
