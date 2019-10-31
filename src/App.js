@@ -6,12 +6,15 @@ import Jointrent from './pages/Jointrent.js';
 import Entiretenancy from './pages/Entiretenancy.js';
 import Ownertojoin from './pages/Ownertojoin.js';
 import Housingresource from './pages/Housingresource.js';
+import Datails from './pages/Datails.js'
+
 
 function App() {
   return (
     <div className="App">
       <Switch>
                 <Route path="/home" component={Home}/>
+                <Route path="/datails" component={Datails}/>
                 <Route path="/jointrent" component={Jointrent}/>
                 <Route path="/entiretenancy" component={Entiretenancy}/>
                 <Route path="/ownertojoin" component={Ownertojoin}/>
