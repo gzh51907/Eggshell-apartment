@@ -8,12 +8,15 @@ import Ownertojoin from './pages/Ownertojoin.js';
 import Housingresource from './pages/Housingresource.js';
 import Login from './pages/Login.js';
 import Reg from './pages/Reg.js';
+import Datails from './pages/Datails.js'
+
 
 function App() {
   return (
     <div className="App">
       <Switch>
                 <Route path="/home" component={Home}/>
+                <Route path="/datails" component={Datails}/>
                 <Route path="/jointrent" component={Jointrent}/>
                 <Route path="/entiretenancy" component={Entiretenancy}/>
                 <Route path="/ownertojoin" component={Ownertojoin}/>

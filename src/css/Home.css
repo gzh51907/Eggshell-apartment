@@ -1,0 +1,25 @@
+a{text-decoration: none;}
+ul,li{list-style: none;}
+.col1{background: #3dbcc6;height:2.346667rem;}
+.img{width:90px;height: 19px ;display:block;margin: 10px 10px 0 10px;}
+.button{border: 1px solid #fff; line-height: 15px;font-size: 8px;padding-bottom: 5px;}
+.icon{font-size: 10px;}
+.lunbo img{width: 100%;}
+.content{width: 95%;margin: auto;}
+.back{display: flex;justify-content: space-around ;width: 100%;}
+.back img{width: 45px;height: 45px;}
+.back li{width: 25%;height:85px;text-align: center;border-bottom: 1px solid #F2F4F5;}
+.story_block{float: right;width: 210px;}
+.s1{font-size: 14px;
+    color: #333;
+    font-weight: 700;}
+.p1{
+    font-size: 12px;
+    color: #999;
+    line-height: 19px;
+    padding-top: 8px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}

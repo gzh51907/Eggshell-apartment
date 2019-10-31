@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { log } from 'util';
 
-let Hgw = axios.create({
-    baseURL:'http://127.0.0.1:1906/user/reg'
+
+let danke = axios.create({
+    baseURL:'http://127.0.0.1:1906/goods'
 })
 
 export async function get(params,config={}){
-    let {data} = await Hgw.get('',{
+    let {data} = await danke.get('',{
         ...config,
         params
     });
@@ -14,10 +15,7 @@ export async function get(params,config={}){
 }
 
 export async function post(params,config={}){
-    console.log(params);
-    
-    let data = await axios.post('',params,config);
-    console.log(data);
+    let {data} = await danke.post('',params,config);
     return data;
     
     
