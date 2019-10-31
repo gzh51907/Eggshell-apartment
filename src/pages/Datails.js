@@ -29,7 +29,7 @@ class Datails extends Component {
         return (
             <div>
                 <Row>
-                    <Col span={24} className="col1" style={{ display: "flex" }}>
+                    <Col span={24} className="col1" style={{ display: "flex",height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
                             <Button style={{
@@ -60,6 +60,11 @@ class Datails extends Component {
                         <img src="https://public.danke.com.cn/public-20190918-Fou-8eJwChQ6Fl7IktZsI-AI7eSE-roomMobileDetail.jpg" />
                     </div>
                 </Carousel>
+                <div style={{width:"100%",height:"50px",position:"absolute",bottom:0,left:0,zIndex:9}} className="aaa">
+                    <p className="p1" style={{width:"20%",height:"100%",border:"1px solid #fff",fontSize:"10px"}}><Icon type="heart" style={{display:"block",fontSize:"16px",paddingTop:8}} />收藏</p>
+                    <p className="foot" style={{width:"40%",height:"100%",background:"#EEC02F",}}>电话咨询</p>
+                    <p className="foot" style={{width:"40%",height:"100%",background:"#3DBCC6",}}>在线预约</p>
+                </div>
             </div>
         )
     }

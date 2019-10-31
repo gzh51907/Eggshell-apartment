@@ -57,7 +57,7 @@ class Home extends Component {
         return (
             <div>
                 <Row>
-                    <Col span={24} className="col1" style={{ display: "flex" }}>
+                    <Col span={24} className="col1" style={{ display: "flex",height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
                             <Button style={{
