@@ -38,10 +38,10 @@ class Home extends Component {
     async componentDidMount() {
         //接受数据
         let data = await Api.get([
-
         ])
-        console.log(JSON.parse(data[4].data));
         //拿到数据库里面的对应数据
+        console.log(data);
+        
         this.setState({
             datalist: JSON.parse(data[4].data),
             lists: JSON.parse(data[1].data),
