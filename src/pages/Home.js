@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-
+import { connect } from "react-redux"
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
-
+import axios from "axios"
 import '../css/Home.css'
 const { Search } = Input;
 const menu = (
@@ -26,22 +26,25 @@ const menu = (
 );
 class Home extends Component {
     state = {
-        
+
         datalist: [],
         lists: [],
-        datas: []
+        datas: [],
+        goodsli: []
     }
     //路由跳转
     goto(path) {
         this.props.history.push(path)
     }
+
     async componentDidMount() {
+
         //接受数据
         let data = await Api.get([
         ])
         //拿到数据库里面的对应数据
-        console.log(data);
-        
+
+
         this.setState({
             datalist: JSON.parse(data[4].data),
             lists: JSON.parse(data[1].data),
@@ -51,7 +54,7 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.state);
+
         //数据解构
         let { datalist, lists, datas } = this.state
         return (
@@ -177,6 +180,5 @@ class Home extends Component {
         )
     }
 }
-
 export default Home;
 //  "北京市", "深圳市","上海市","杭州市","天津市","武汉市","南京市","广州市","成都市","无锡市","西安市","重庆市"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, NavLink, withRouter } from 'react-router-dom';
-
+import { connect } from "react-redux"
 import Home from './pages/Home.js';
 import Jointrent from './pages/Jointrent.js';
 import Entiretenancy from './pages/Entiretenancy.js';
@@ -33,5 +33,5 @@ function App() {
     </div>
   );
 }
-
+App = connect()(App)
 export default App;
