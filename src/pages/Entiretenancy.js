@@ -467,6 +467,11 @@ class Entiretenancy extends Component {
 
 
     };
+    goto(_id){
+        console.log(_id);
+        
+        this.props.history.push(`/datails/${_id}`)
+    }
 
     render() {
 
@@ -542,7 +547,7 @@ class Entiretenancy extends Component {
                     itemLayout="horizontal"
                     dataSource={this.state.dataList}
                     renderItem={item => (
-                      <List.Item >
+                      <List.Item onClick={this.goto.bind(this,item._id)}>
                       <div className="left">
                           <img src={item.list_image} alt="" />
                           <p className="rentType">{item.list_rent}</p>

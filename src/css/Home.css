@@ -6,7 +6,7 @@ ul,li{list-style: none;}
 .icon{font-size: 10px;}
 .lunbo img{width: 100%;}
 .content{width: 95%;margin: auto;}
-.back{display: flex;justify-content: space-around ;width: 100%;}
+.back{display: flex;justify-content: space-around  ;width: 100%;}
 .back img{width: 45px;height: 45px;}
 .back li{width: 25%;height:85px;text-align: center;border-bottom: 1px solid #F2F4F5;}
 .story_block{float: right;width: 210px;}

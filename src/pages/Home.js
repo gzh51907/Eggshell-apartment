@@ -1,47 +1,45 @@
 import React, { Component } from 'react'
-
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
-
+import { connect } from "react-redux"
 import '../css/Home.css'
 const { Search } = Input;
 const menu = (
     <Menu>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                北京市
-        </a>
+            首页
         </Menu.Item>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-                深圳市
-        </a>
+            个人中心
         </Menu.Item>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-                上海市
-        </a>
+            业主加盟
         </Menu.Item>
     </Menu>
 );
 class Home extends Component {
     state = {
-        
+
         datalist: [],
         lists: [],
-        datas: []
+        datas: [],
+        goodsli: []
     }
     //路由跳转
     goto(path) {
         this.props.history.push(path)
     }
+
     async componentDidMount() {
+        //   let ododo=  goodslis.fl(item=>id!=item.id)
+
         //接受数据
         let data = await Api.get([
         ])
         //拿到数据库里面的对应数据
         console.log(data);
-        
+
+
         this.setState({
             datalist: JSON.parse(data[4].data),
             lists: JSON.parse(data[1].data),
@@ -51,13 +49,13 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.state);
+
         //数据解构
         let { datalist, lists, datas } = this.state
         return (
             <div>
                 <Row>
-                    <Col span={24} className="col1" style={{ display: "flex" }}>
+                    <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
                             <Button style={{
@@ -75,8 +73,17 @@ class Home extends Component {
                     <Col span={24} style={{ display: "flex", justifyContent: "space-around" }}>
                         <Search placeholder="输入您想住的区域，商圈或小区名称" onSearch={value => console.log(value)} enterButton style={{ width: "80%", borderRadius: 50, }} />
                         <span >
-                            {/* <Icon type="menu" /> */}
-                            <Dropdown overlay={menu} placement="bottomCenter">
+                            <Dropdown overlay={<Menu>
+                                <Menu.Item>
+                                    首页
+                                 </Menu.Item>
+                                <Menu.Item onClick={this.goto.bind(this, "/centerpor")}>
+                                    个人中心
+                                </Menu.Item>
+                                <Menu.Item>
+                                    业主加盟
+                                 </Menu.Item>
+                            </Menu>} placement="bottomCenter">
                                 <Button style={{ display: "block", border: "1px solid #ccc", width: 50, height: 30, textAlign: "center", fontSize: 18, borderRadius: 20, }} className="button">
                                     <Icon type="menu" />
                                     {/* <Icon type="environment" theme="filled" className="icon" />
@@ -177,6 +184,5 @@ class Home extends Component {
         )
     }
 }
-
 export default Home;
 //  "北京市", "深圳市","上海市","杭州市","天津市","武汉市","南京市","广州市","成都市","无锡市","西安市","重庆市"
