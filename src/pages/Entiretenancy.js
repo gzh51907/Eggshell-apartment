@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Select, Cascader, Icon, TreeSelect , List, Button } from 'antd';
-import './Entiretenancy.scss';
+import '../css/Entiretenancy.scss';
 import axios from 'axios';
+import { log } from 'util';
 
 // 合租Cascader级联选择
 const options = [
@@ -26,12 +27,15 @@ const options = [
 
     },
 ];
-function onChange(value) {
-    console.log(value);
-}
+// function onChange(value) {
+//     console.log(value);
+// }
 function displayRender(label) {
     return label[label.length - 1];
 }
+
+
+
 
 // 位置 treeData树选择
 const treeData = [
@@ -157,7 +161,19 @@ const optionsPrice = [
         label: '2000-2500元',
 
     },
+    {
+        value: '2500-3000元',
+        label: '2500-3000元',
+
+    },
+    {
+        value: '3000元以上',
+        label: '3000元以上',
+
+    },
 ];
+
+
 
 // 更多 
 const treeData1 = [
@@ -167,21 +183,6 @@ const treeData1 = [
         key: '房屋特色',
         selectable: false,
         children: [
-            {
-                title: '独卫',
-                value: '独卫',
-                key: '独卫',
-            },
-            {
-                title: '独立阳台',
-                value: '独立阳台',
-                key: '独立阳台',
-            },
-            {
-                title: '独立淋浴',
-                value: '独立淋浴',
-                key: '独立淋浴',
-            },
             {
                 title: '集中供暖',
                 value: '集中供暖',
@@ -193,11 +194,7 @@ const treeData1 = [
                 key: '品质公寓',
             },
 
-            {
-                title: '近地铁',
-                value: '近地铁',
-                key: '近地铁',
-            },
+          
         ],
 
     },
@@ -212,12 +209,7 @@ const treeData1 = [
                 title: '可立即入住',
                 value: '可立即入住',
                 key: '可立即入住',
-            },
-            {
-                title: '可预订',
-                value: '可预订',
-                key: '可预订',
-            },
+            }
 
         ],
     },
@@ -330,30 +322,179 @@ class Entiretenancy extends Component {
         this.state = {
             price: "价格",
             value: "位置",
-            value1: "更多",
-            page:"1",
-            total:"3",
+            valueMore: ["更多"],
+            page:1,
+            total:0,
             dataList:[],
+            searchCondition:{list_rent:"合",list_diq:[]}
         }
     }
+
+  
+    // 初始化
     async componentDidMount(){
-        let {data}= await axios.get("http://127.0.0.1:1907/goods/page",{params:[{list_rent:"合"},{pa:4}]
-    });
-        let dataList=data
-        // 手动请求第一个tab内容
-        this.setState({
-            dataList
-        })
+        this.getData(1)
     }
 
-    onChange = value => {
-        console.log(value);
-        this.setState({ value });
+    // 用页码和查询条件发送网络请求拿数据
+    async getData(page){
+        // console.log(this.state.page,this.state.total,this.state.searchCondition);
+      
+        let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[this.state.searchCondition,{page:page}]
+       });
+
+       this.state.total=data.total;
+        // 重设react数据
+        let dataList=data.data1;
+
+        if(page){this.setState({
+            dataList,
+            page
+        })}else{
+            this.setState({
+                dataList,
+            })
+        }
+        // console.log("当前页:",this.state.page,"总页数",this.state.total,this.state.searchCondition,);
+    }
+
+    // 上一页  页数bug未解决
+    turnUp=()=>{
+        if(this.state.page>1){
+            let  page= this.state.page-1
+          this.getData(page)
+        }
+    }
+
+    // 下一页   页数bug未解决
+    turnDown=()=>{
+        if(this.state.page<this.state.total){
+            let  page= (this.state.page+1)*1;
+          this.getData(page);
+        }
+    }
+
+    // 合租 整租月租
+    onChangeType = value => {
+
+    let searchCondition=this.state.searchCondition;
+        
+        if(value=="不限"||value=="月租"){
+            delete  searchCondition.list_rent
+        }
+        if(value=="整租"){
+        searchCondition.list_rent="整";
+        }
+        if(value=="合租"){
+        searchCondition.list_rent="合";
+        }
+
+        this.setState({searchCondition});
+        this.getData(1)
     };
 
-    onChange1 = value1 => {
-        console.log(value1);
-        this.setState({ value1 });
+    // 位置
+    onChangeSite= value => {
+    console.log(typeof value,value);
+
+    let searchCondition=this.state.searchCondition;
+        
+    if(value=="不限"){
+        delete  searchCondition.list_sub
+    }else{
+        searchCondition.list_sub=value
+    }
+    
+
+    this.setState({searchCondition});
+    console.log(this.state.searchCondition);
+
+    this.getData(1)
+   
+};
+
+    // 价格
+    onChangePrice=value=>{
+    let searchCondition=this.state.searchCondition;
+
+
+        if(value=="1500元以下"){
+             searchCondition.list_price={$lt:1500};
+          
+        }else if(value=="1500-2000元"){
+            searchCondition.list_price={$gt:1500,$lt:2000};
+        }else if(value=="2000-2500元"){
+            searchCondition.list_price={$gt:2000,$lt:2500};
+        }else if(value=="2500-3000元"){
+            searchCondition.list_price={$gt:2500,$lt:3000};
+        }else if(value=="3000元以上"){
+            searchCondition.list_price={$gt:3000};
+        }else if(value=="不限"){
+            delete  searchCondition.list_price
+        }
+
+        this.setState({searchCondition});
+        this.getData(1)
+}
+
+
+    //更多
+    onChangeMore = valueMore => {
+        
+    let searchCondition=this.state.searchCondition;
+        console.log(valueMore);
+        
+     // 房屋特色
+        if(valueMore.indexOf("集中供暖")!=-1){
+            searchCondition.list_cenc_o="集中供暖"
+        }else{
+            delete searchCondition.list_cenc_o
+        }
+
+        if(valueMore.indexOf("品质公寓")!=-1){
+            searchCondition.list_cenc_t="品质公寓"
+        }else{
+            delete searchCondition.list_cenc_t
+
+        }
+
+        // 房屋状态
+        if(valueMore.indexOf("可立即入住")!=-1){
+            searchCondition.list_cenc_s="可立即入住"
+        }else{
+            delete searchCondition.list_cenc_s
+        }
+
+        // 户型
+        
+
+
+        // 朝向
+        function check(item,index,array) {
+            let reg=/["东","南","西","北"]/;
+             return reg.test(item)
+        }
+        if(valueMore.some(check)){
+
+            searchCondition.list_diq=new Set();
+            ["东","南","西","北","东南","西南","东北","西北"].forEach(function name(item,index) {
+                if(valueMore.indexOf(item)!=-1){
+                    let  sub= valueMore.indexOf(item)
+                      searchCondition.list_diq.add(valueMore[sub])
+                  } 
+            })
+            searchCondition.list_diq=[...searchCondition.list_diq]
+        }else{
+           searchCondition.list_diq=[]
+        }
+
+        console.log("当前页:",this.state.page,"总页数",this.state.total,this.state.searchCondition,);
+
+        this.setState({searchCondition,valueMore });
+        this.getData(1)
+
+
+
     };
 
     render() {
@@ -368,7 +509,7 @@ class Entiretenancy extends Component {
                     options={options}
                     expandTrigger="hover"
                     displayRender={displayRender}
-                    onChange={onChange}
+                    onChange={this.onChangeType}
                     defaultValue={["合租"]}
                     style={{ width: "25%", height: "100%", textAlign: "center", border: "none",color:"green",fontWeight:600 }}
                     allowClear={false}
@@ -383,7 +524,7 @@ class Entiretenancy extends Component {
                     treeData={treeData}
                     // placeholder="Please select"
                     treeDefaultExpandAll
-                    onChange={this.onChange}
+                    onChange={this.onChangeSite}
                     suffixIcon={<Icon type="caret-down"
                     />}
 
@@ -395,7 +536,7 @@ class Entiretenancy extends Component {
                     options={optionsPrice}
                     expandTrigger="hover"
                     displayRender={displayRender}
-                    onChange={onChange}
+                    onChange={this.onChangePrice}
                     defaultValue={["不限"]}
                     style={{ width: "25%", height: "100%", textAlign: "center", border: "none", }}
                     allowClear={false}
@@ -406,29 +547,22 @@ class Entiretenancy extends Component {
             {/* 更多 */}
 
                 <TreeSelect
+                 multiple
                   style={{ width: "25%", position: "static" ,}}
-                  value={this.state.value1}
+                  value={this.state.valueMore}
                   dropdownStyle={{ width: "100%" ,overflow: 'visible', left: "0!important", boxShadow: "none", position: "static", }}
                   treeData={treeData1}
-                  // placeholder="Please select"
                   treeDefaultExpandAll
-                  onChange={this.onChange1}
+                  onChange={this.onChangeMore}
                   suffixIcon={<Icon type="caret-down"
                   />}
-                    maxTagPlaceholder={"更多"}
                     maxTagCount={0}
-                    multiple
                     treeIcon
-                     // dropdownMatchSelectWidth={false}
-                // onTreeExpand={function name(expandedKeys) {
-                //     console.log(expandedKeys);
-                // }}
-                // onSelect={function (value, node, extra) {
-                //     console.log(value, node, extra);
-
-                // }}
+                    maxTagPlaceholder={"更多"}
                 >
                 </TreeSelect>
+
+
             </div >
 
             <div className="list">
@@ -461,8 +595,9 @@ class Entiretenancy extends Component {
                     )}
 
                   />,
-            <div style={{width:"100%",textAlign:"center"}}><button style={{color:"white", background: "#4bb4bb",width:"45%",height:"0.4rem"}}>上一页</button>
-            <button style={{color:"white", background: "#4bb4bb",width:"45%",height:"0.4rem",marginBottom:"0.1rem"}}>下一页</button>
+            <div style={{width:"100%",textAlign:"center"}}>
+                <button onClick={this.turnUp} style={{color:"white", background: "#4bb4bb",width:"45%",height:"0.4rem"}}>上一页</button>
+            <button onClick={this.turnDown}  style={{color:"white", background: "#4bb4bb",width:"45%",height:"0.4rem",marginBottom:"0.1rem"}}>下一页</button>
 
             <p style={{textAlign:"center",fontSize:".213333rem"}}>第{this.state.page}/{this.state.total}页</p></div>
 
