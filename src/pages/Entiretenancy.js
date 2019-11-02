@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
-import { Select, Cascader, Icon, TreeSelect , List, Button } from 'antd';
+import { Select, Cascader, Icon, TreeSelect , List, Button,Row, Col, Menu, Dropdown,Input } from 'antd';
 import '../css/Entiretenancy.scss';
 import axios from 'axios';
 import { log } from 'util';
+
+const menu = (
+    <Menu>
+        <Menu.Item>
+            首页
+        </Menu.Item>
+        <Menu.Item>
+            个人中心
+        </Menu.Item>
+        <Menu.Item>
+            业主加盟
+        </Menu.Item>
+    </Menu>
+);
+const { Search } = Input;
 
 // 合租Cascader级联选择
 const options = [
@@ -34,7 +49,7 @@ function displayRender(label) {
     return label[label.length - 1];
 }
 
-// 位置 treeData树选择
+// 位置数据 treeData树选择
 const treeData = [
     {
         title: '不限',
@@ -74,45 +89,10 @@ const treeData = [
                 key: '5号线',
             },
         ],
-    },
-    {
-        title: '区域',
-        selectable: false,
-        value: '区域',
-        key: '区域',
-        children: [
-            {
-                title: '东城区',
-                value: '东城区',
-                key: '东城区',
-            },
-            {
-                title: '西城区',
-                value: '西城区',
-                key: '西城区',
-            },
-            {
-                title: '朝阳区',
-                value: '朝阳区',
-                key: '朝阳区',
-            },
-            {
-                title: '海淀区',
-                value: '海淀区',
-                key: '海淀区',
-            },
-            {
-                title: '丰台区',
-                value: '丰台区',
-                key: '丰台区',
-            },
-
-        ],
-    },
-
+    }
 ];
 
-// 价格Cascader级联选择
+// 价格数据 Cascader级联选择
 const optionsPrice = [
     {
         value: '不限',
@@ -146,7 +126,7 @@ const optionsPrice = [
     },
 ];
 
-// 更多 
+// 更多数据 
 const treeData1 = [
     {
         title: '房屋特色',
@@ -191,24 +171,24 @@ const treeData1 = [
         selectable: false,
         children: [
             {
-                title: '1居',
-                value: '1居',
-                key: '1居',
+                title: '1室',
+                value: '1室',
+                key: '1室',
             },
             {
-                title: '2居',
-                value: '2居',
-                key: '2居',
+                title: '2室',
+                value: '2室',
+                key: '2室',
             },
             {
-                title: '3居',
-                value: '3居',
-                key: '3居',
+                title: '3室',
+                value: '3室',
+                key: '3室',
             },
             {
-                title: '3居+',
-                value: '3居+',
-                key: '3居+',
+                title: '3室+',
+                value: '3室+',
+                key: '3室+',
             },
         ],
     },
@@ -266,11 +246,7 @@ const treeData1 = [
         key: '排序',
         selectable: false,
         children: [
-            {
-                title: '默认排序',
-                value: '默认排序',
-                key: '默认排序',
-            },
+          
             {
                 title: '价格从低到高',
                 value: '价格从低到高',
@@ -300,15 +276,17 @@ class Entiretenancy extends Component {
             searchCondition:{list_rent:"合",list_diq:[]}
         }
     }
-
   
     // 初始化
     async componentDidMount(){
-        this.getData(1)
+        this.getData()
     }
 
+    componentWillUnmount(){
+        this.getData()
+    }
     // 用页码和查询条件发送网络请求拿数据
-    async getData(page){
+    async getData(page=1){
         // console.log(this.state.page,this.state.total,this.state.searchCondition);
       
         let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[this.state.searchCondition,{page:page}]
@@ -361,7 +339,7 @@ class Entiretenancy extends Component {
         }
 
         this.setState({searchCondition});
-        this.getData(1)
+        this.getData()
     };
 
     // 位置
@@ -375,15 +353,13 @@ class Entiretenancy extends Component {
     }else{
         searchCondition.list_sub=value
     }
-    
 
     this.setState({searchCondition});
     console.log(this.state.searchCondition);
 
-    this.getData(1)
+    this.getData()
    
-};
-
+    };
     // 价格
     onChangePrice=value=>{
     let searchCondition=this.state.searchCondition;
@@ -401,13 +377,12 @@ class Entiretenancy extends Component {
         }else if(value=="3000元以上"){
             searchCondition.list_price={$gt:3000};
         }else if(value=="不限"){
-            delete  searchCondition.list_price
+             searchCondition.list_price={$gt:0};
         }
 
         this.setState({searchCondition});
-        this.getData(1)
-}
-
+        this.getData()
+    }
 
     //更多
     onChangeMore = valueMore => {
@@ -437,7 +412,34 @@ class Entiretenancy extends Component {
         }
 
         // 户型
-        
+       if(valueMore.join().indexOf("室")!=-1){
+           
+        searchCondition.list_title=new Set();
+        ["1室","2室","3室","3室+"].forEach(function name(item,index) {
+            if(valueMore.indexOf(item)!=-1){
+                let  sub= valueMore.indexOf(item)
+                  searchCondition.list_title.add(valueMore[sub])
+              } 
+        })
+        searchCondition.list_title=[...searchCondition.list_title]
+       }else{
+        searchCondition.list_title=[]
+       }
+
+      //  按价格高低排序
+      let  lowTOHigh= valueMore.indexOf("价格从低到高")
+      let  highToLow=valueMore.indexOf("价格从低到高")
+
+          if(valueMore.indexOf("价格从低到高")!=-1){
+           
+
+          }
+      
+      
+
+      this.setState({searchCondition});
+      this.getData()
+
 
 
         // 朝向
@@ -462,7 +464,7 @@ class Entiretenancy extends Component {
         console.log("当前页:",this.state.page,"总页数",this.state.total,this.state.searchCondition,);
 
         this.setState({searchCondition,valueMore });
-        this.getData(1)
+        this.getData()
 
 
 
@@ -471,6 +473,8 @@ class Entiretenancy extends Component {
         console.log(_id);
         
         this.props.history.push(`/datails/${_id}`)
+        // console.log(this.props);
+        
     }
 
     render() {
@@ -478,6 +482,49 @@ class Entiretenancy extends Component {
         return (
             
             <div>
+  <Row>
+                    <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
+                        <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
+                        <Dropdown overlay={menu} placement="bottomCenter">
+                            <Button style={{
+                                padding: 0, height: 18, width: 75, borderRadius: 25, marginTop: 10, fontSize: 10, color: "#3DBCC6", position: "relative",
+                                zIndex: 15,
+                            }} className="button">
+                                <Icon type="environment" theme="filled" className="icon" />
+                                广州
+                                <Icon type="caret-down" theme="filled" className="icon" />
+                            </Button>
+                        </Dropdown>
+                    </Col>
+                </Row>
+
+                <Row style={{ marginTop: 10, marginBottom: 10 }}>
+                    <Col span={24} style={{ display: "flex", justifyContent: "space-around" }}>
+                        <Search placeholder="输入您想住的区域，商圈或小区名称" onSearch={value => console.log(value)} enterButton style={{ width: "80%", borderRadius: 50, }} />
+                        <span >
+                            <Dropdown overlay={<Menu>
+                                <Menu.Item>
+                                    首页
+                                 </Menu.Item>
+                                <Menu.Item onClick={this.goto.bind(this, "/centerpor")}>
+                                    个人中心
+                                </Menu.Item>
+                                <Menu.Item>
+                                    业主加盟
+                                 </Menu.Item>
+                            </Menu>} placement="bottomCenter">
+                                <Button style={{ display: "block", border: "1px solid #ccc", width: 50, height: 30, textAlign: "center", fontSize: 18, borderRadius: 20, }} className="button">
+                                    <Icon type="menu" />
+                                    {/* <Icon type="environment" theme="filled" className="icon" />
+                                广州
+                                <Icon type="caret-down" theme="filled" className="icon" /> */}
+                                </Button>
+                            </Dropdown>
+                        </span>
+                    </Col>
+                </Row>
+
+
 
                  <div  style={{ width: "100%", height: "100%", display: "flex",marginBottom:"10px" }} >
                 {/* 合租 */}
