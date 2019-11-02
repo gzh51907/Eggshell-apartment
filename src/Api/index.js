@@ -3,7 +3,7 @@ import { log } from 'util';
 
 
 let danke = axios.create({
-    baseURL:'http://127.0.0.1:1906/goods'
+    baseURL:'http://127.0.0.1:1906/Home'
 })
 
 export async function get(params,config={}){

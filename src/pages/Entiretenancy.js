@@ -337,13 +337,16 @@ class Entiretenancy extends Component {
         }
     }
     async componentDidMount(){
-        let {data}= await axios.get("http://127.0.0.1:1907/goods/page",{params:[{list_rent:"合"},{pa:4}]
+        let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[{list_rent:"合"},{pa:4}]
     });
         let dataList=data
         // 手动请求第一个tab内容
         this.setState({
             dataList
         })
+        console.log( dataList);
+        
+        
     }
 
     onChange = value => {
@@ -355,6 +358,11 @@ class Entiretenancy extends Component {
         console.log(value1);
         this.setState({ value1 });
     };
+    goto(_id){
+        console.log(_id);
+        
+        this.props.history.push(`/datails/${_id}`)
+    }
 
     render() {
 
@@ -437,7 +445,7 @@ class Entiretenancy extends Component {
                     itemLayout="horizontal"
                     dataSource={this.state.dataList}
                     renderItem={item => (
-                      <List.Item >
+                      <List.Item onClick={this.goto.bind(this,item._id)}>
                       <div className="left">
                           <img src={item.list_image} alt="" />
                           <p className="rentType">{item.list_rent}</p>

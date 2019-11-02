@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
-
+import { connect } from "react-redux"
 import '../css/Home.css'
 const { Search } = Input;
 const menu = (
@@ -26,7 +26,7 @@ const menu = (
 );
 class Home extends Component {
     state = {
-        
+
         datalist: [],
         lists: [],
         datas: []
@@ -36,12 +36,19 @@ class Home extends Component {
         this.props.history.push(path)
     }
     async componentDidMount() {
+        let { goodslis: { goodslis } } = this.props
+
+        console.log(goodslis);
+    //   let ododo=  goodslis.fl(item=>id!=item.id)
+
         //接受数据
         let data = await Api.get([
         ])
         //拿到数据库里面的对应数据
         console.log(data);
-        
+
+        console.log(this.props);
+
         this.setState({
             datalist: JSON.parse(data[4].data),
             lists: JSON.parse(data[1].data),
@@ -57,7 +64,7 @@ class Home extends Component {
         return (
             <div>
                 <Row>
-                    <Col span={24} className="col1" style={{ display: "flex",height: ".606667rem" }}>
+                    <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
                             <Button style={{
@@ -177,6 +184,9 @@ class Home extends Component {
         )
     }
 }
-
+const mepStareprops = (goodslis) => ({
+    goodslis: goodslis
+})
+Home = connect(mepStareprops)(Home)
 export default Home;
 //  "北京市", "深圳市","上海市","杭州市","天津市","武汉市","南京市","广州市","成都市","无锡市","西安市","重庆市"
