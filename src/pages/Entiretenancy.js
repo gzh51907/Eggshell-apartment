@@ -34,9 +34,6 @@ function displayRender(label) {
     return label[label.length - 1];
 }
 
-
-
-
 // 位置 treeData树选择
 const treeData = [
     {
@@ -44,30 +41,6 @@ const treeData = [
         value: '不限',
         key: '不限',
 
-    },
-
-    {
-        title: '附近',
-        selectable: false,
-        value: '附近',
-        key: '附近',
-        children: [
-            {
-                title: '1000米内',
-                value: '1000米内',
-                key: '1000米内',
-            },
-            {
-                title: '2000米内',
-                value: '2000米内',
-                key: '2000米内',
-            },
-            {
-                title: '3000米内',
-                value: '3000米内',
-                key: '3000米内',
-            },
-        ],
     },
     {
         title: '地铁',
@@ -172,8 +145,6 @@ const optionsPrice = [
 
     },
 ];
-
-
 
 // 更多 
 const treeData1 = [
