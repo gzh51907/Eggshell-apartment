@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Icon, Menu, Badge, Tooltip, Button } from 'antd';
-
+import { withUser } from "../hoc"
+import { connect } from "react-redux"
 class Centerpor extends Component {
     state = {
         menu: [{
@@ -23,16 +24,29 @@ class Centerpor extends Component {
             path: "/collection",
             text: '我的收藏',
             icon: 'star'
-        }]
+        }],
+        username: ""
     }
     loAuto() {
-        console.log(123);
-
+        localStorage.removeItem('user');
+        this.props.history.push("/login")
     }
-    componentDidMount() {
+    async componentDidMount() {
+        let user = localStorage.getItem('user');
+        this.setState({
+            username: user
+        })
+        if (user) {
+            console.log("通过");
+        } else {
+            this.props.history.push("/login")
+            // console.log(this.props);
 
+        }
     }
     render() {
+        let { username } = this.state
+
         const text =
             <span onClick={this.loAuto.bind(this)}>安全退出</span>
             ;
@@ -63,12 +77,11 @@ class Centerpor extends Component {
                         </div>
                         <div>
                             <p style={{ fontSize: ".3rem", color: "#fff", margin: 0, fontWeight: 600 }}>
-                                123565
+                                {username}
                             </p>
                             <p style={{ fontSize: ".2rem", color: "#fff" }}>
                                 <span style={{ marginRight: ".066667rem" }}>
-                                    21244
-
+                                    {username}
                                 </span>
                                 <Icon type="form" />
                             </p>
@@ -136,5 +149,8 @@ class Centerpor extends Component {
         )
     }
 }
+
+// Centerpor = withUser(Centerpor)
+Centerpor = connect()(Centerpor)
 
 export default Centerpor;

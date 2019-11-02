@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux"
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
 import { connect } from "react-redux"
@@ -8,19 +7,13 @@ const { Search } = Input;
 const menu = (
     <Menu>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                北京市
-        </a>
+            首页
         </Menu.Item>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-                深圳市
-        </a>
+            个人中心
         </Menu.Item>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-                上海市
-        </a>
+            业主加盟
         </Menu.Item>
     </Menu>
 );
@@ -80,8 +73,17 @@ class Home extends Component {
                     <Col span={24} style={{ display: "flex", justifyContent: "space-around" }}>
                         <Search placeholder="输入您想住的区域，商圈或小区名称" onSearch={value => console.log(value)} enterButton style={{ width: "80%", borderRadius: 50, }} />
                         <span >
-                            {/* <Icon type="menu" /> */}
-                            <Dropdown overlay={menu} placement="bottomCenter">
+                            <Dropdown overlay={<Menu>
+                                <Menu.Item>
+                                    首页
+                                 </Menu.Item>
+                                <Menu.Item onClick={this.goto.bind(this, "/centerpor")}>
+                                    个人中心
+                                </Menu.Item>
+                                <Menu.Item>
+                                    业主加盟
+                                 </Menu.Item>
+                            </Menu>} placement="bottomCenter">
                                 <Button style={{ display: "block", border: "1px solid #ccc", width: 50, height: 30, textAlign: "center", fontSize: 18, borderRadius: 20, }} className="button">
                                     <Icon type="menu" />
                                     {/* <Icon type="environment" theme="filled" className="icon" />

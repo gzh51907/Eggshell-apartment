@@ -12,7 +12,6 @@ import Datails from './pages/Datails.js'
 import Centerpor from './pages/Centerpor.js';
 import Collection from './pages/porrouter/Collection.js';
 import Submit from './pages/Submit.js';
-import { connect } from "react-redux"
 function App() {
   return (
     <div className="App">
