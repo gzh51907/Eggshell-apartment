@@ -41,7 +41,6 @@ class Centerpor extends Component {
         } else {
             this.props.history.push("/login")
             // console.log(this.props);
-
         }
     }
     render() {
