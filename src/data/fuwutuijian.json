@@ -1,0 +1,233 @@
+[
+    {
+        "type": "服务推荐",
+        "title": "一排icon",
+        "sub_title": "一排icon",
+        "version": "",
+        "designer": "",
+        "desc": "",
+        "tabs": [],
+        "more_url": "",
+        "data": [
+            {
+                "title": "合租",
+                "sub_title": "合租",
+                "tab": "合租",
+                "image": "https://public.danke.com.cn/public-20180319-Fv-CS5LQX0-HuOrLTN_0xPELxwfL",
+                "image_title": "",
+                "url": "https://www.danke.com/room/gz/mh0.html",
+                "intro": null
+            },
+            {
+                "title": "整租",
+                "sub_title": "整租",
+                "tab": "整租",
+                "image": "https://public.danke.com.cn/public-20180319-FpCn5y1oJiqxcN3oyQdIgXaDh2oA",
+                "image_title": "",
+                "url": "https://www.danke.com/room/gz/mz0.html",
+                "intro": null
+            },
+            {
+                "title": "业主加盟",
+                "sub_title": "业主加盟",
+                "tab": "业主加盟",
+                "image": "https://public.danke.com.cn/public-20180319-FtStiZtciRuNxrVVNqwhmh8KSYhD",
+                "image_title": "",
+                "url": "https://www.danke.com/about/mobile_yezhu.html",
+                "intro": null
+            },
+            {
+                "title": "房源定制",
+                "sub_title": "帮您快速找房",
+                "tab": "房源定制",
+                "image": "https://public.danke.com.cn/public-20181204-FopgEsrtTlQ528ELuxmxN4CRXx-6",
+                "image_title": "",
+                "url": "https://www.danke.com/pangu-activity/marketing/custom-house-resource?city_id=1",
+                "intro": null
+            }
+        ]
+    },
+    {
+        "type": "蛋壳合租",
+        "title": "蛋壳合租",
+        "sub_title": "高档家居 高品质合租公寓",
+        "version": "",
+        "designer": "",
+        "desc": "",
+        "tabs": [],
+        "more_url": "",
+        "data": [
+            {
+                "room_id": 428682,
+                "title": "天河公园 乐雅苑 主卧 朝西北 D室",
+                "sub_title": "地铁 11号线,13号线,21号线 / 约17平米 / 独卫 独浴",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 2160,
+                "url": "https://www.danke.com/room/2119387338.html",
+                "intro": ""
+            },
+            {
+                "room_id": 425645,
+                "title": "杨箕 福今路14号大院 朝北 A室",
+                "sub_title": "地铁 1号线,5号线 / 约9平米",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 1760,
+                "url": "https://www.danke.com/room/1855006991.html",
+                "intro": ""
+            },
+            {
+                "room_id": 422615,
+                "title": "东晓南 万翠苑 次卧 朝北 C室",
+                "sub_title": "地铁 2号线 / 约8平米",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20190930-FkZthpZSbHH_N92ExE8kPMsBDWSa-roomPcList.jpg",
+                "image_title": 1400,
+                "url": "https://www.danke.com/room/502912501.html",
+                "intro": ""
+            },
+            {
+                "room_id": 212466,
+                "title": "华师 司法局宿舍 次卧 朝北 B室",
+                "sub_title": "地铁 3号线,11号线 / 约9平米",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20190102-FhcxOUWxK9ne0nx0zWTUz5djPbIL-roomPcList.jpg",
+                "image_title": 1630,
+                "url": "https://www.danke.com/room/1992183346.html",
+                "intro": ""
+            },
+            {
+                "room_id": 93031,
+                "title": "员村 侨颖苑 主卧 朝东 C室",
+                "sub_title": "地铁 5号线,11号线,21号线 / 约22平米 / 独卫 独立阳台",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20181009-Fj-sdWyth8RNOwfTSBHP3d1o0TWX-roomPcList.jpg",
+                "image_title": 2230,
+                "url": "https://www.danke.com/room/61842565.html",
+                "intro": ""
+            },
+            {
+                "room_id": 77834,
+                "title": "鹭江 愉景南苑 朝北 D室",
+                "sub_title": "地铁 8号线 / 约19平米 / 独立阳台",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20180510-FhJiJ7KwRo4LcvDoQC5zEKcaOxsS-roomPcList.jpg",
+                "image_title": 2090,
+                "url": "https://www.danke.com/room/780895562.html",
+                "intro": ""
+            }
+        ]
+    },
+    {
+        "type": "蛋壳月租",
+        "title": "蛋壳月租",
+        "sub_title": "租期您定 月租月轻松",
+        "version": "",
+        "designer": "",
+        "desc": "",
+        "tabs": [],
+        "more_url": "",
+        "data": [
+            {
+                "room_id": 419978,
+                "title": "裕丰围 怡港花园 次卧 朝西北 E室",
+                "sub_title": "地铁 13号线,7号线 / 约13平米",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 1230,
+                "url": "https://www.danke.com/room/673589962.html",
+                "intro": ""
+            },
+            {
+                "room_id": 411196,
+                "title": "飞翔公园 康盈阁 次卧 朝南 C室",
+                "sub_title": "地铁 2号线 / 约8平米",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20190918-FimdWWX8baZQdB0vkPKGp6CBTa_w-roomPcList.jpg",
+                "image_title": 1410,
+                "url": "https://www.danke.com/room/2044553784.html",
+                "intro": ""
+            },
+            {
+                "room_id": 410233,
+                "title": "番禺广场 开阳阁 主卧 朝西 D室",
+                "sub_title": "地铁 3号线,18号线,22号线 / 约18平米 / 独卫 独浴",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 1500,
+                "url": "https://www.danke.com/room/801995099.html",
+                "intro": ""
+            },
+            {
+                "room_id": 410074,
+                "title": "番禺广场 东方花园3区 次卧 朝南 C室",
+                "sub_title": "番禺区 / 约8平米",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 940,
+                "url": "https://www.danke.com/room/2119025946.html",
+                "intro": ""
+            },
+            {
+                "room_id": 410072,
+                "title": "番禺广场 东方花园3区 次卧 朝东 A室",
+                "sub_title": "番禺区 / 约10平米",
+                "tab": "",
+                "image": "//pangu-s1.danke.com.cn/build/img/room/no-picture-e63a495fc7.jpg?-roomPcList.jpg",
+                "image_title": 1040,
+                "url": "https://www.danke.com/room/258180180.html",
+                "intro": ""
+            },
+            {
+                "room_id": 409943,
+                "title": "东晓南 和辉花园 主卧 朝西 C室",
+                "sub_title": "地铁 2号线 / 约12平米 / 独立阳台",
+                "tab": "",
+                "image": "https://public.danke.com.cn/public-20190914-FlJUNW2JtqDJ0IShGIvr1YrT250B-roomPcList.jpg",
+                "image_title": 1430,
+                "url": "https://www.danke.com/room/1583781749.html",
+                "intro": ""
+            }
+        ]
+    },
+    {
+        "type": "蛋壳故事",
+        "title": "付费",
+        "sub_title": "需支付¥1.5元查看",
+        "version": "",
+        "designer": "",
+        "desc": "",
+        "tabs": [],
+        "more_url": "",
+        "data": [
+            {
+                "title": "有关「蛋壳业主」的核心7问",
+                "sub_title": "有关「蛋壳业主」的核心7问",
+                "tab": "有关「蛋壳业主」的核心7问",
+                "image": "https://public.danke.com.cn/public-20180914-FsIZ6M6gAmwMSh7g8fHGuQ98lUEa",
+                "image_title": "",
+                "url": "https://www.danke.com/zhuanti/story?storyID=11",
+                "intro": "众所周知，房源是租赁平台最头痛的问题，那么蛋壳公寓是凭借着什么“特殊能力”在短短3年间获得了这10多万业主的认可与信任？"
+            },
+            {
+                "title": "80后的自强“任性”生活",
+                "sub_title": "80后的自强“任性”生活",
+                "tab": "80后的自强“任性”生活",
+                "image": "https://public.danke.com.cn/public-20180914-Fr300OXLOUWs96M-i0gJ_NGKcGWv",
+                "image_title": "",
+                "url": "https://www.danke.com/zhuanti/story?storyID=10",
+                "intro": "据不完全统计，蛋壳公寓业主的主要人群，大多都是被80后劝说的父母一辈人，或者业主本身就是80后。那么，在蛋壳公寓当业主到底是一种怎样的体验？"
+            },
+            {
+                "title": "专属保洁工作人员的幸运",
+                "sub_title": "专属保洁工作人员的幸运",
+                "tab": "专属保洁工作人员的幸运",
+                "image": "https://public.danke.com.cn/public-20180914-Fpzf0ttd0iCC5Nq-Ltw4vqFvqhpm",
+                "image_title": "",
+                "url": "https://www.danke.com/zhuanti/story?storyID=9",
+                "intro": "在这里，他学习到了保洁化学试剂的正确使用，收入还更稳定有保障，与此同时与蛋壳这家创业公司共同成长领略到了团队协作的能力等等，最重要的是，他得到了890名租客的肯定。"
+            }
+        ]
+    }
+]

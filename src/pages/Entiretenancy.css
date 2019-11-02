@@ -13,12 +13,10 @@ body {
   text-align: center;
   height: 100%;
 }
-
 .ant-select-dropdown {
   width: 100%;
   border: none;
 }
-
 #rc-tree-select-list_1 {
   width: 100%;
   height: 18rem;
@@ -29,7 +27,6 @@ body {
   overflow-x: hidden;
   background-color: white;
 }
-
 #rc-tree-select-list_2 {
   width: 100%;
   height: 18rem;
@@ -152,19 +149,16 @@ body {
   margin: 0;
   white-space: nowrap;
 }
-
 .list li .right .pTitle {
   margin-bottom: 0.15rem;
   font-weight: 600;
 }
-
 .list li .right .pDetail {
   width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0.08rem;
 }
-
 .list li .right .pSite {
   width: 62%;
   overflow: hidden;
@@ -179,7 +173,6 @@ body {
   color: red;
   font-weight: 900;
 }
-
 .list li .right span {
   display: inline-block;
   margin-right: 0.05rem;
@@ -191,12 +184,10 @@ body {
   border: 1px solid #e64d3d;
   color: red;
 }
-
 .list li .right .spanT {
   border: 1px solid blue;
   color: blue;
 }
-
 .list li .right .spanS {
   border: 1px solid #01bd9c;
   color: #01bd9c;
