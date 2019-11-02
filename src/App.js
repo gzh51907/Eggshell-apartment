@@ -11,13 +11,15 @@ import Reg from './pages/Reg.js';
 import Datails from './pages/Datails.js'
 import Centerpor from './pages/Centerpor.js';
 import Collection from './pages/porrouter/Collection.js';
-
+import Submit from './pages/Submit.js';
+import { connect } from "react-redux"
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route path="/home" component={Home} />
-        <Route path="/datails" component={Datails} />
+        <Route path="/submit" component={Submit} />
+        <Route path="/datails/:id" component={Datails} />
         <Route path="/jointrent" component={Jointrent} />
         <Route path="/entiretenancy" component={Entiretenancy} />
         <Route path="/ownertojoin" component={Ownertojoin} />

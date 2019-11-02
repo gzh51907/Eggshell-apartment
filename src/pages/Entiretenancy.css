@@ -1,0 +1,175 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.ant-cascader-menus:nth-child(1) {
+  width: 100%;
+}
+.ant-cascader-menus:nth-child(1) .ant-cascader-menu {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+.ant-select-dropdown {
+  width: 100%;
+  border: none;
+}
+#rc-tree-select-list_1 {
+  width: 100%;
+  height: 18rem;
+  position: absolute;
+  left: -1.3rem;
+  top: 0;
+  z-index: 99999;
+  overflow-x: hidden;
+  background-color: white;
+}
+#rc-tree-select-list_2 {
+  width: 100%;
+  height: 18rem;
+  position: absolute;
+  left: -3.8rem;
+  top: 0;
+  z-index: 99999;
+  overflow-x: hidden;
+  background-color: white;
+}
+.ant-select-tree-child-tree .ant-select-tree-treenode-switcher-open {
+  display: inline-block;
+}
+.ant-select-tree > li:nth-child(1) {
+  display: block;
+}
+.ant-select-tree li:nth-child(1) {
+  margin: 0;
+}
+.ant-select-tree li span.ant-select-tree-switcher,
+.ant-select-tree li span.ant-select-tree-iconEle {
+  font-size: 0;
+  width: 0;
+}
+.ant-select-tree
+  .ant-select-tree-treenode-switcher-open
+  span.ant-select-tree-switcher {
+  width: 0;
+}
+#rc-tree-select-list_1 .ant-select-tree li ul {
+  padding: 0;
+}
+#rc-tree-select-list_2 .ant-select-tree li ul {
+  padding: 0;
+}
+.App .ant-select-selection--multiple .ant-select-selection__choice {
+  border: none;
+  background-color: white;
+}
+.ant-select {
+  overflow: hidden;
+}
+#rc-tree-select-list_2
+  .ant-select-tree
+  li
+  .ant-select-tree-node-content-wrapper {
+  width: auto;
+}
+#rc-tree-select-list_1
+  .ant-select-tree
+  li
+  .ant-select-tree-node-content-wrapper {
+  width: auto;
+}
+#rc-tree-select-list_1
+  .ant-select-tree
+  li
+  span.ant-select-tree-switcher.ant-select-tree-switcher_open
+  .ant-select-switcher-icon {
+  display: none;
+}
+#rc-tree-select-list_2
+  .ant-select-tree
+  li
+  span.ant-select-tree-switcher.ant-select-tree-switcher_open
+  .ant-select-switcher-icon {
+  display: none;
+}
+.list {
+  width: 100%;
+  padding-left: 0.1rem;
+  overflow: scroll;
+}
+.list li {
+  display: flex;
+  padding: 0.025rem 0.025rem 0.025rem 0;
+  height: 1.673333rem;
+}
+.list li .left {
+  width: 34%;
+  position: relative;
+}
+.list li .left img {
+  width: 100%;
+}
+.list li .left .rentType {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.3rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  font-size: 0.0016rem;
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+.list li .right {
+  width: 66%;
+  position: relative;
+  font-size: 0.16rem;
+  padding-left: 0.1566667rem;
+}
+.list li .right p {
+  margin: 0;
+  white-space: nowrap;
+}
+.list li .right .pTitle {
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}
+.list li .right .pDetail {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.08rem;
+}
+.list li .right .pSite {
+  width: 62%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.07rem;
+}
+.list li .right .pPrice {
+  position: absolute;
+  right: 0.093333rem;
+  top: 0.25rem;
+  color: red;
+  font-weight: 900;
+}
+.list li .right span {
+  display: inline-block;
+  margin-right: 0.05rem;
+  padding: 0 0.02rem;
+  font-size: 0.133333rem;
+}
+.list li .right .spanO {
+  border: 1px solid #e64d3d;
+  color: red;
+}
+.list li .right .spanT {
+  border: 1px solid blue;
+  color: blue;
+}
+.list li .right .spanS {
+  border: 1px solid #01bd9c;
+  color: #01bd9c;
+}

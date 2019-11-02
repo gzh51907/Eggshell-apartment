@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
-import axios from "axios"
+import { connect } from "react-redux"
 import '../css/Home.css'
 const { Search } = Input;
 const menu = (
@@ -38,11 +38,13 @@ class Home extends Component {
     }
 
     async componentDidMount() {
+        //   let ododo=  goodslis.fl(item=>id!=item.id)
 
         //接受数据
         let data = await Api.get([
         ])
         //拿到数据库里面的对应数据
+        console.log(data);
 
 
         this.setState({
@@ -60,7 +62,7 @@ class Home extends Component {
         return (
             <div>
                 <Row>
-                    <Col span={24} className="col1" style={{ display: "flex" }}>
+                    <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
                             <Button style={{
