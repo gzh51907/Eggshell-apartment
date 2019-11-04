@@ -19,7 +19,7 @@ const menu = (
 );
 const { Search } = Input;
 
-// 合租Cascader级联选择
+// 合租数据 Cascader级联选择
 const options = [
     {
         value: '不限',
@@ -42,9 +42,6 @@ const options = [
 
     },
 ];
-// function onChange(value) {
-//     console.log(value);
-// }
 function displayRender(label) {
     return label[label.length - 1];
 }
@@ -92,7 +89,7 @@ const treeData = [
     }
 ];
 
-// 价格数据 Cascader级联选择
+// 价格范围数据 Cascader级联选择
 const optionsPrice = [
     {
         value: '不限',
@@ -247,11 +244,7 @@ const treeData1 = [
         selectable: false,
         children: [
           
-            {
-                title: '价格从低到高',
-                value: '价格从低到高',
-                key: '价格从低到高',
-            },
+           
             {
                 title: '价格从高到低',
                 value: '价格从高到低',
@@ -267,13 +260,14 @@ class Entiretenancy extends Component {
     constructor() {
         super();
         this.state = {
+            priceOrder:"1",
             price: "价格",
             value: "位置",
             valueMore: ["更多"],
             page:1,
             total:0,
             dataList:[],
-            searchCondition:{list_rent:"合",list_diq:[]}
+            searchCondition:{list_rent:"合"}
         }
     }
   
@@ -282,17 +276,18 @@ class Entiretenancy extends Component {
         this.getData()
     }
 
-    componentWillUnmount(){
-        this.getData()
-    }
+    // componentWillUnmount(){
+    //     this.getData()
+    // }
+    
     // 用页码和查询条件发送网络请求拿数据
     async getData(page=1){
-        // console.log(this.state.page,this.state.total,this.state.searchCondition);
       
-        let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[this.state.searchCondition,{page:page}]
+        let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[this.state.searchCondition,{page:page},{priceOrder:this.state.priceOrder}]
        });
 
        this.state.total=data.total;
+
         // 重设react数据
         let dataList=data.data1;
 
@@ -300,14 +295,16 @@ class Entiretenancy extends Component {
             dataList,
             page
         })}else{
-            this.setState({
-                dataList,
-            })
+
+            // this.setState({
+            //     dataList,
+            // })
+            console.log(666);
+            
         }
-        // console.log("当前页:",this.state.page,"总页数",this.state.total,this.state.searchCondition,);
     }
 
-    // 上一页  页数bug未解决
+    // 上一页  
     turnUp=()=>{
         if(this.state.page>1){
             let  page= this.state.page-1
@@ -315,7 +312,7 @@ class Entiretenancy extends Component {
         }
     }
 
-    // 下一页   页数bug未解决
+    // 下一页   
     turnDown=()=>{
         if(this.state.page<this.state.total){
             let  page= (this.state.page+1)*1;
@@ -360,7 +357,7 @@ class Entiretenancy extends Component {
     this.getData()
    
     };
-    // 价格
+    // 价格范围
     onChangePrice=value=>{
     let searchCondition=this.state.searchCondition;
 
@@ -418,7 +415,10 @@ class Entiretenancy extends Component {
         ["1室","2室","3室","3室+"].forEach(function name(item,index) {
             if(valueMore.indexOf(item)!=-1){
                 let  sub= valueMore.indexOf(item)
-                  searchCondition.list_title.add(valueMore[sub])
+                if(item=="3室+"){
+                    searchCondition.list_title.add("[4-9]室|[1-9][0-9]室")
+                }else{
+                     searchCondition.list_title.add(valueMore[sub])}
               } 
         })
         searchCondition.list_title=[...searchCondition.list_title]
@@ -427,20 +427,11 @@ class Entiretenancy extends Component {
        }
 
       //  按价格高低排序
-      let  lowTOHigh= valueMore.indexOf("价格从低到高")
-      let  highToLow=valueMore.indexOf("价格从低到高")
-
-          if(valueMore.indexOf("价格从低到高")!=-1){
-           
-
+          if(valueMore.indexOf("价格从高到低")!=-1){
+            this.state.priceOrder=-1
+          }else{
+            this.state.priceOrder=1
           }
-      
-      
-
-      this.setState({searchCondition});
-      this.getData()
-
-
 
         // 朝向
         function check(item,index,array) {
@@ -469,6 +460,8 @@ class Entiretenancy extends Component {
 
 
     };
+
+
     goto(_id){
         console.log(_id);
         
@@ -482,7 +475,7 @@ class Entiretenancy extends Component {
         return (
             
             <div>
-  <Row>
+            <Row>
                     <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
@@ -567,7 +560,7 @@ class Entiretenancy extends Component {
 
                 />,
     
-            {/* 更多 */}
+              {/* 更多 */}
 
                 <TreeSelect
                  multiple
@@ -584,8 +577,6 @@ class Entiretenancy extends Component {
                     maxTagPlaceholder={"更多"}
                 >
                 </TreeSelect>
-
-
             </div >
 
             <div className="list">
