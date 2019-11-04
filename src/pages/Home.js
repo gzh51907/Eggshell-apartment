@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Menu, Dropdown, Button, Icon, Input, Carousel, message } from 'antd';
 import Api from '../Api'
+import axios from 'axios'
 import { connect } from "react-redux"
 import '../css/Home.css'
 const { Search } = Input;
@@ -34,7 +35,7 @@ class Home extends Component {
         //   let ododo=  goodslis.fl(item=>id!=item.id)
 
         //接受数据
-        let data = await Api.get([
+        let {data} = await axios.get('http://127.0.0.1:1906/goods',[
         ])
         //拿到数据库里面的对应数据
         console.log(data);
@@ -80,7 +81,7 @@ class Home extends Component {
                                 <Menu.Item onClick={this.goto.bind(this, "/centerpor")}>
                                     个人中心
                                 </Menu.Item>
-                                <Menu.Item>
+                                <Menu.Item onClick={this.goto.bind(this, "/Ownertojoin")}>
                                     业主加盟
                                  </Menu.Item>
                             </Menu>} placement="bottomCenter">

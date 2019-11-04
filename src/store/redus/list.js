@@ -13,4 +13,3 @@ setTimeout(() => {
     shuju()
 }, 100);
 
-export default ;
