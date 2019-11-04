@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, NavLink, withRouter } from 'react-router-dom';
-import { connect } from "react-redux"
+
 import Home from './pages/Home.js';
+import Lijiweituo from './pages/Lijiweituo.js';
 import Jointrent from './pages/Jointrent.js';
 import Entiretenancy from './pages/Entiretenancy.js';
 import Ownertojoin from './pages/Ownertojoin.js';
@@ -12,11 +13,13 @@ import Datails from './pages/Datails.js'
 import Centerpor from './pages/Centerpor.js';
 import Collection from './pages/porrouter/Collection.js';
 import Submit from './pages/Submit.js';
+import { connect } from "react-redux"
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route path="/home" component={Home} />
+        <Route path="/lijiweituo" component={Lijiweituo} />
         <Route path="/submit" component={Submit} />
         <Route path="/datails/:id" component={Datails} />
         <Route path="/jointrent" component={Jointrent} />
