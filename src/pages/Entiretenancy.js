@@ -278,20 +278,19 @@ class Entiretenancy extends Component {
     }
   
     // 初始化
-    async componentDidMount(){
+    async componentDidMount() {
+        
         this.getData()
     }
 
-    componentWillUnmount(){
-        this.getData()
-    }
     // 用页码和查询条件发送网络请求拿数据
     async getData(page=1){
         // console.log(this.state.page,this.state.total,this.state.searchCondition);
       
         let {data}= await axios.get("http://127.0.0.1:1906/goods/page",{params:[this.state.searchCondition,{page:page}]
        });
-
+   
+       
        this.state.total=data.total;
         // 重设react数据
         let dataList=data.data1;
@@ -344,7 +343,7 @@ class Entiretenancy extends Component {
 
     // 位置
     onChangeSite= value => {
-    console.log(typeof value,value);
+ 
 
     let searchCondition=this.state.searchCondition;
         
@@ -355,7 +354,7 @@ class Entiretenancy extends Component {
     }
 
     this.setState({searchCondition});
-    console.log(this.state.searchCondition);
+   
 
     this.getData()
    
@@ -388,7 +387,7 @@ class Entiretenancy extends Component {
     onChangeMore = valueMore => {
         
     let searchCondition=this.state.searchCondition;
-        console.log(valueMore);
+       
         
      // 房屋特色
         if(valueMore.indexOf("集中供暖")!=-1){
@@ -461,7 +460,7 @@ class Entiretenancy extends Component {
            searchCondition.list_diq=[]
         }
 
-        console.log("当前页:",this.state.page,"总页数",this.state.total,this.state.searchCondition,);
+  
 
         this.setState({searchCondition,valueMore });
         this.getData()
@@ -469,12 +468,8 @@ class Entiretenancy extends Component {
 
 
     };
-    goto(_id){
-        console.log(_id);
-        
+    goto(_id){        
         this.props.history.push(`/datails/${_id}`)
-        // console.log(this.props);
-        
     }
 
     render() {
@@ -482,7 +477,7 @@ class Entiretenancy extends Component {
         return (
             
             <div>
-  <Row>
+                <Row>
                     <Col span={24} className="col1" style={{ display: "flex", height: ".606667rem" }}>
                         <img src="//public.danke.com.cn/public-20171231-FsRYcCtsOytIYH7C5nZCiLvaWQ1H" className="img" />
                         <Dropdown overlay={menu} placement="bottomCenter">
