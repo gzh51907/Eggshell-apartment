@@ -1,0 +1,7 @@
+ /* .slick-dots-bottom .slick-active button{
+    background-color: #fff;
+    z-index: 99;
+} */
+.slick-dots-bottom .slick-active{
+    background-color: orangered;
+} 
